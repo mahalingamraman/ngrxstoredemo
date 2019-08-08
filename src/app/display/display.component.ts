@@ -17,4 +17,12 @@ export class DisplayComponent implements OnInit {
   ngOnInit() {
   }
 
+  removeTrack(id) {
+    this.store.dispatch({
+      type: 'REMOVE_TRACK',
+      payload: <Track>{
+        id: id
+      }
+    });
+  }
 }

@@ -3,12 +3,16 @@
   <tr>
       <td>Track ID </td>
       <td>Track Name </td>
+      <td>Action</td>
   </tr>
   </thead>
   <tbody>
       <tr *ngFor="let track of tracks | async">
           <td>{{ track.id }}</td>
           <td>{{ track.name }}</td>
+          <td>
+            <button color="warn" (click)='removeTrack(track.id)'>Delete</button>
+          </td>
       </tr>
   </tbody>
 </table>
