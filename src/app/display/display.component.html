@@ -1,0 +1,14 @@
+<table class="table table-hover" *ngIf="track!= 0">
+  <thead>
+  <tr>
+      <td>Track ID </td>
+      <td>Track Name </td>
+  </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let track of tracks | async">
+          <td>{{ track.id }}</td>
+          <td>{{ track.name }}</td>
+      </tr>
+  </tbody>
+</table>
