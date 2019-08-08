@@ -4,6 +4,7 @@ import { AppState } from './../app.state';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { RemoveTrack } from '../actions/track.action';
 
 @Component({
   selector: 'app-display',
@@ -19,13 +20,10 @@ export class DisplayComponent implements OnInit {
   ngOnInit() {
   }
 
-  removeTrack(id) {
-    this.store.dispatch({
-      type: 'REMOVE_TRACK',
-      payload: <Track>{
-        id: id
-      }
-    });
+  removeTrack(payload) {
+    if (confirm("Are you sure to delete '" + payload.name + "'?")) {
+      this.store.dispatch(new RemoveTrack(payload.id));
+    }
   }
   navigateToTrack(id: number) {
     this.router.navigate(['track', id]);

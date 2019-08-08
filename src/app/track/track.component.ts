@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Track } from './track.model';
 import { AppState } from './../app.state';
 import { Store } from '@ngrx/store';
+import { AddTrack } from '../actions/track.action';
 
 @Component({
   selector: 'app-track',
@@ -21,13 +22,10 @@ export class TrackComponent implements OnInit {
    });
   }
   addTrack(id, name) {
-    this.store.dispatch({
-      type: 'ADD_TRACK',
-      payload: <Track> {
-        id: id,
-        name: name
-      }
-    });
+    this.store.dispatch(new AddTrack({
+      id: id,
+      name: name
+    }));
     this.angForm.reset();
   }
   ngOnInit() {
