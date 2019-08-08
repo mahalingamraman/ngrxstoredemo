@@ -7,17 +7,21 @@ import { StoreModule } from '@ngrx/store';
 import { addTrackReducer } from './reducers/track.reducer';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DisplayComponent } from './display/display.component';
+import { TrackdisplayComponent } from './trackdisplay/trackdisplay.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     TrackComponent,
-    DisplayComponent
+    DisplayComponent,
+    TrackdisplayComponent
   ],
   imports: [
     BrowserModule,
-	StoreModule.forRoot({track: addTrackReducer}),
-	ReactiveFormsModule
+	  StoreModule.forRoot({track: addTrackReducer}),
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

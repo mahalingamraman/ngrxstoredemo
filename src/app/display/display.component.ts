@@ -1,8 +1,9 @@
 import { Track } from './../track/track.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { AppState } from './../app.state';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-display',
@@ -11,7 +12,8 @@ import { Observable } from 'rxjs';
 })
 export class DisplayComponent implements OnInit {
   tracks: Observable<Track[]>;
-  constructor(private store: Store<AppState>) {
+  trackSelected: EventEmitter<number> = new EventEmitter();
+  constructor(private store: Store<AppState>, private router: Router) {
     this.tracks = this.store.select(state => state.track);
    }
   ngOnInit() {
@@ -24,5 +26,8 @@ export class DisplayComponent implements OnInit {
         id: id
       }
     });
+  }
+  navigateToTrack(id: number) {
+    this.router.navigate(['track', id]);
   }
 }
