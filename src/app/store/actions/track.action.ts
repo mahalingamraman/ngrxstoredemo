@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Track } from '../track/track.model';
+import { Track } from '../models/track.model';
 
 export const ADD_TRACK = 'Add_Track';
 export const REMOVE_TRACK = 'Remove_Track';

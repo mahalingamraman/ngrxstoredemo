@@ -1,9 +1,9 @@
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { Track } from './track.model';
-import { AppState } from './../app.state';
+import { Track } from '../../models/track.model';
+import { AppState } from '../../app.state';
 import { Store } from '@ngrx/store';
-import { AddTrack } from '../actions/track.action';
+import { AddTrack } from '../../store/actions/track.action';
 
 @Component({
   selector: 'app-track',

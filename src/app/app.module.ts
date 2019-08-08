@@ -2,12 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { TrackComponent } from './track/track.component';
+import { TrackComponent } from './components/track/track.component';
 import { StoreModule } from '@ngrx/store';
-import { addTrackReducer } from './reducers/track.reducer';
+import { addTrackReducer } from './store/reducers/track.reducer';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DisplayComponent } from './display/display.component';
-import { TrackdisplayComponent } from './trackdisplay/trackdisplay.component';
+import { DisplayComponent } from './components/display/display.component';
+import { TrackdisplayComponent } from './components/trackdisplay/trackdisplay.component';
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({

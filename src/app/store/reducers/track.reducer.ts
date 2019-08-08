@@ -1,4 +1,4 @@
-import { Track } from './../track/track.model';
+import { Track } from './../models/track.model';
 import { Actions, ADD_TRACK, REMOVE_TRACK } from '../actions/track.action';
 
 export function addTrackReducer(state: Track[] = [], action: Actions) {

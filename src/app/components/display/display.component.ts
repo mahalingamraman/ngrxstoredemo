@@ -1,10 +1,10 @@
-import { Track } from './../track/track.model';
+import { Track } from '../../models/track.model';
 import { Component, OnInit, EventEmitter } from '@angular/core';
-import { AppState } from './../app.state';
+import { AppState } from '../../app.state';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { RemoveTrack } from '../actions/track.action';
+import { RemoveTrack } from '../../store/actions/track.action';
 
 @Component({
   selector: 'app-display',
@@ -25,7 +25,7 @@ export class DisplayComponent implements OnInit {
       this.store.dispatch(new RemoveTrack(payload.id));
     }
   }
-  navigateToTrack(id: number) {
+  navigateToTrack(id: string) {
     this.router.navigate(['track', id]);
   }
 }
