@@ -17,13 +17,15 @@ import { TrackService } from './services/track.service';
 import { TrackComponent } from './components/track/track.component';
 import { DisplayComponent } from './components/display/display.component';
 import { TrackdisplayComponent } from './components/trackdisplay/trackdisplay.component';
+import { TrackDetailsComponent } from './components/track-details/track-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TrackComponent,
     DisplayComponent,
-    TrackdisplayComponent
+    TrackdisplayComponent,
+    TrackDetailsComponent
   ],
   imports: [
     BrowserModule,

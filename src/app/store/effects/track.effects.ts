@@ -25,6 +25,7 @@ export class TrackEffects {
     withLatestFrom(this.store.pipe(select(selectTrackList))),
     switchMap(([id, tracks]) => {
       const selectedTrack = tracks.filter(track => track.id === +id)[0];
+      console.log(selectedTrack);
       return of(new GetTrackSuccess(selectedTrack));
     })
   );
@@ -33,7 +34,9 @@ export class TrackEffects {
   getTracks$ = this.actions$.pipe(
     ofType<GetTracks>(ETrackActions.GetTracks),
     switchMap(() => this.trackService.getTracks()),
-    switchMap((trackHttp: ITrackHttp) => of(new GetTracksSuccess(trackHttp.tracks)))
+    switchMap((trackHttp: ITrackHttp) => { 
+      return of(new GetTracksSuccess(trackHttp))
+    })
   );
 
   constructor(
