@@ -7,7 +7,7 @@
   </tr>
   </thead>
   <tbody>
-      <tr *ngFor="let track of tracks | async">
+      <tr *ngFor="let track of tracks">
           <td (click)="navigateToTrack(track.id)">{{ track.id }}</td>
           <td (click)="navigateToTrack(track.id)">{{ track.name }}</td>
           <td>

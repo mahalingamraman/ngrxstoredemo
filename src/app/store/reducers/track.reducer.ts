@@ -1,13 +1,53 @@
-import { Track } from './../models/track.model';
-import { Actions, ADD_TRACK, REMOVE_TRACK } from '../actions/track.action';
+/*import { TrackActions } from '../actions/track.actions';
+import { ETrackActions } from './../actions/track.actions';
 
-export function addTrackReducer(state: Track[] = [], action: Actions) {
+import { initialTrackState, ITrackState } from '../state/track.state';
+
+export const trackReducers = (state = initialTrackState, action: TrackActions): ITrackState => {
   switch (action.type) {
-    case ADD_TRACK:
-        return [...state, action.payload];
-    case REMOVE_TRACK:
-        return state.filter(({ id }) => id !== action.id);
+    case ETrackActions.ADD_TRACK:
+        return state; //[...state, action.payload];
+    case ETrackActions.REMOVE_TRACK:
+        return state; // .filter(({ id }) => id !== action.id);
+    case ETrackActions.GetTracksSuccess: {
+      return {
+        ...state,
+        tracks: action.payload
+      };
+    }
+    case ETrackActions.GetTrackSuccess: {
+      return {
+        ...state,
+        selectedTrack: action.payload
+      };
+    }
     default:
         return state;
     }
-}
+}*/
+import { ETrackActions } from './../actions/track.actions';
+import { TrackActions } from '../actions/track.actions';
+import { initialTrackState, ITrackState } from '../state/track.state';
+
+export const trackReducers = (
+  state = initialTrackState,
+  action: TrackActions
+): ITrackState => {
+  switch (action.type) {
+    case ETrackActions.GetTracksSuccess: {
+      return {
+        ...state,
+        tracks: action.payload
+      };
+    }
+    case ETrackActions.GetTrackSuccess: {
+      return {
+        ...state,
+        selectedTrack: action.payload
+      };
+    }
+
+    default:
+      return state;
+  }
+};

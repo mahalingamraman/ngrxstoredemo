@@ -1,9 +1,13 @@
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { Track } from '../../models/track.model';
-import { AppState } from '../../app.state';
-import { Store } from '@ngrx/store';
-import { AddTrack } from '../../store/actions/track.action';
+import { ITrack } from '../../models/track.interface';
+//import { AppState } from '../../app.state';
+import { Store, select } from '@ngrx/store';
+import { AddTrack } from '../../store/actions/track.actions';
+import { IAppState } from '../../store/state/app.state';
+import { selectTrackList } from '../../store/selectors/track.selector';
+import { GetTracks } from './../../store/actions/track.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-track',
@@ -12,7 +16,8 @@ import { AddTrack } from '../../store/actions/track.action';
 })
 export class TrackComponent implements OnInit {
   angForm: FormGroup;
-  constructor(private store: Store<AppState>, private fb: FormBuilder) { 
+  tracks$ = this.store.pipe(select(selectTrackList));
+  constructor(private store: Store<IAppState>, private fb: FormBuilder, private router: Router) { 
     this.createForm();
   }
   createForm() {
@@ -29,6 +34,10 @@ export class TrackComponent implements OnInit {
     this.angForm.reset();
   }
   ngOnInit() {
+    this.store.dispatch(new GetTracks());
+  }
+  navigateToTrack(id: number) {
+    this.router.navigate(['track', id]);
   }
 
 }

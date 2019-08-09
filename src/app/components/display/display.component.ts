@@ -1,10 +1,10 @@
-import { Track } from '../../models/track.model';
-import { Component, OnInit, EventEmitter } from '@angular/core';
-import { AppState } from '../../app.state';
+import { ITrack } from '../../models/track.interface';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+//import { AppState } from '../../app.state';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { RemoveTrack } from '../../store/actions/track.action';
+import { RemoveTrack } from '../../store/actions/track.actions';
 
 @Component({
   selector: 'app-display',
@@ -12,20 +12,22 @@ import { RemoveTrack } from '../../store/actions/track.action';
   styleUrls: ['./display.component.css']
 })
 export class DisplayComponent implements OnInit {
-  tracks: Observable<Track[]>;
+  @Input()
+  tracks: ITrack[];
+  @Output()
   trackSelected: EventEmitter<number> = new EventEmitter();
-  constructor(private store: Store<AppState>, private router: Router) {
-    this.tracks = this.store.select(state => state.track);
+  constructor() {
+    // this.tracks = this.store.select(state => state.track);
    }
   ngOnInit() {
   }
 
   removeTrack(payload) {
     if (confirm("Are you sure to delete '" + payload.name + "'?")) {
-      this.store.dispatch(new RemoveTrack(payload.id));
+      // this.store.dispatch(new RemoveTrack(payload.id));
     }
   }
-  navigateToTrack(id: string) {
-    this.router.navigate(['track', id]);
+  navigateToTrack(id: number) {
+    this.trackSelected.emit(id);
   }
 }

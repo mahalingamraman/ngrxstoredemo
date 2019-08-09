@@ -33,7 +33,7 @@
 </div>
     </div>
     <div class="col-md-9">
-      <app-display></app-display>
+      <app-display [tracks]="tracks$ | async"  (trackSelected)="navigateToTrack($event)"></app-display>
     </div>
   </div>
 </div>

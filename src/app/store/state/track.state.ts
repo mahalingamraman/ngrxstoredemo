@@ -1,11 +1,11 @@
-import { Track } from '../../models/track.model';
+import { ITrack } from '../../models/track.interface';
 
 export interface ITrackState {
-  tracks: Track[];
-  selectedTrack: Track;
+  tracks: ITrack[];
+  selectedTrack: ITrack;
 }
 
-export const initialUserState: ITrackState = {
+export const initialTrackState: ITrackState = {
   tracks: null,
   selectedTrack: null
 };
